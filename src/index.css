@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "tailwindcss/utilities";
+
+@layer utilities {
+  .gradient {
+    @apply bg-gradient-to-r from-green-600 via-blue-600 to-pink-600;
+  }
+}
