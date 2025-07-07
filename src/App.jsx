@@ -10,12 +10,6 @@ import { AppLayout } from "./layouts/appLayout";
 import GifProvider from "./context/gifContext";
 import { AuthProvider } from "./context/authContext";
 
-// Homepage
-// categories
-// search
-// favorites
-// single gif
-
 const router = createBrowserRouter([
   {
     element: <AppLayout />,
