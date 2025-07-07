@@ -5,7 +5,7 @@ import { Homepage } from "./routes/homepage";
 import { Favorites } from "./routes/favorites";
 import { GifPage } from "./routes/singleGifs";
 import { Search } from "./routes/search";
-import { Categories } from "./routes/Categories";
+import { Categories } from "./routes/categories";
 import { AppLayout } from "./layouts/appLayout";
 import GifProvider from "./context/gifContext";
 import { AuthProvider } from "./context/authContext";
