@@ -33,7 +33,6 @@ export const GifPage = () => {
 
     setGif(data);
     setRelatedGifs(related);
-    console.log(relatedGifs);
   };
 
   useEffect(() => {

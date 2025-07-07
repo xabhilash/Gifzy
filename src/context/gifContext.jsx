@@ -73,7 +73,6 @@ const GifProvider = ({ children }) => {
 
   const addToFavorites = async (id) => {
     if (!user) {
-      // If not logged in, prompt to sign in
       alert("Please sign in to save favorites!");
       return;
     }
@@ -90,13 +89,12 @@ const GifProvider = ({ children }) => {
       newFavorites = [...favorites, id];
     }
 
-    // Update state immediately for better UX
     setFavorites(newFavorites);
     
     // Always save to localStorage first
     saveFavoritesToLocalStorage(user.uid, newFavorites);
 
-    // Try to update Firestore
+    // update Firestore
     try {
       const userDocRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(userDocRef);
@@ -122,7 +120,7 @@ const GifProvider = ({ children }) => {
   useEffect(() => {
     const loadFavorites = async () => {
       if (user) {
-        // Load from localStorage first and show immediately
+        // Load from localStorage first
         const localFavorites = loadFavoritesFromLocalStorage(user.uid);
         setFavorites(localFavorites);
         setFavoritesLoaded(true); // Set to true immediately after localStorage load
@@ -170,7 +168,7 @@ const GifProvider = ({ children }) => {
     loadFavorites();
   }, [user]);
 
-  // Reset pagination when filter changes
+  // infinite scrolling
   useEffect(() => {
     setOffset(0);
     setHasMore(true);
