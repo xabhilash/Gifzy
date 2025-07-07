@@ -37,6 +37,7 @@ A modern, feature-rich GIF search application built with React and powered by th
 
 
 ## 📱 Screenshots
+![image](https://github.com/user-attachments/assets/94657216-591d-4dd3-a7d7-7e3a81bf7a0a)
 
 
 ## 🤝 Contributing
@@ -46,10 +47,6 @@ A modern, feature-rich GIF search application built with React and powered by th
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
