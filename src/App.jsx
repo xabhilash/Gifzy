@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Homepage } from "./routes/homepage";
 import { Favorites } from "./routes/favorites";
 import { GifPage } from "./routes/singleGifs";
-import { Search } from "./routes/Search";
+import { Search } from "./routes/search";
 import { Categories } from "./routes/Categories";
 import { AppLayout } from "./layouts/appLayout";
 import GifProvider from "./context/gifContext";
