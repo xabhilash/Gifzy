@@ -12,6 +12,9 @@ const GifProvider = ({ children }) => {
   const [favorites, setFavorites] = useState([]);
   const [favoritesLoaded, setFavoritesLoaded] = useState(false);
   const [isFirebaseAvailable, setIsFirebaseAvailable] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [offset, setOffset] = useState(0);
   const { user } = useAuth();
 
   // Local storage key for favorites backup
@@ -167,6 +170,60 @@ const GifProvider = ({ children }) => {
     loadFavorites();
   }, [user]);
 
+  // Reset pagination when filter changes
+  useEffect(() => {
+    setOffset(0);
+    setHasMore(true);
+  }, [filter]);
+
+  // Function to load more GIFs
+  const loadMoreGifs = async (searchQuery = null) => {
+    if (isLoading || !hasMore) return;
+
+    setIsLoading(true);
+    try {
+      let response;
+      const limit = 20;
+
+      if (searchQuery) {
+        // Search query
+        response = await gf.search(searchQuery, {
+          sort: "relevant",
+          lang: "en",
+          type: filter,
+          limit,
+          offset,
+        });
+      } else {
+        // Trending
+        response = await gf.trending({
+          limit,
+          offset,
+          type: filter,
+          rating: "g",
+        });
+      }
+
+      const { data, pagination } = response;
+      
+      // Update state
+      setGifs(prev => offset === 0 ? data : [...prev, ...data]);
+      setOffset(prev => prev + limit);
+      setHasMore(pagination.total_count > offset + limit);
+    } catch (error) {
+      console.error("Error loading GIFs:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Reset GIFs
+  const resetGifs = () => {
+    setGifs([]);
+    setOffset(0);
+    setHasMore(true);
+  };
+
   const gf = new GiphyFetch(import.meta.env.VITE_GIPHY_KEY);
 
   return (
@@ -181,6 +238,10 @@ const GifProvider = ({ children }) => {
         favoritesLoaded,
         addToFavorites,
         isFirebaseAvailable,
+        loadMoreGifs,
+        resetGifs,
+        isLoading,
+        hasMore,
       }}
     >
       {children}
