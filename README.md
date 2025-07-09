@@ -4,6 +4,8 @@ A modern, feature-rich GIF search application built with React and powered by th
 
 ![GIFZY Banner](src/svgs/banner.gif)
 
+Project Link: https://gifzy-m676.vercel.app/
+
 ## ✨ Features
 
 ### 🔍 Search & Discovery
@@ -54,7 +56,6 @@ A modern, feature-rich GIF search application built with React and powered by th
 - Firebase for authentication and database services
 - The React community for incredible tools and support
 
-Project Link: https://gifzy-m676.vercel.app/
 
 ---
 Made with ❤️ by Abhilash Mohapatra
